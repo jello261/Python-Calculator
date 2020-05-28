@@ -199,9 +199,7 @@ class calculator():
         if self.t[9].get():
             self.error()
         elif not self.t[0].get():
-            #print("frist")
             self.t[0].set(input)
-        #this works on magic!! Its 3:40 fuck that took forever
         else:
             for i in range(9, -1, -1):
                 if self.t[i].get():
