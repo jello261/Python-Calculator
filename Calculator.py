@@ -159,6 +159,7 @@ class calculator():
             numTwo += two[i]
         
         #computes the two numbers and output an answer
+        Error = False
         if operator == "+":
             total = int(numOne) + int(numTwo)
         elif operator == "-":
@@ -166,14 +167,19 @@ class calculator():
         elif operator == "*":
             total = int(numOne) * int(numTwo)
         elif operator == "/":
-            total = int(numOne) / int(numTwo)
+            if int(numTwo) == 0:
+                self.error()
+                Error = True
+            else:
+                total = int(numOne) / int(numTwo)
 
         #print the answer
-        self.clear()
-        answer = str(total)
-        answer.split()
-        for i in range(len(str(total))):
-            self.screen(answer[i])
+        if not Error:
+            self.clear()
+            answer = str(total)
+            answer.split()
+            for i in range(len(str(total))):
+                self.screen(answer[i])
 
     #clears the screen
     def clear(self):
