@@ -158,8 +158,7 @@ class calculator():
         for i in range(len(two)):
             numTwo += two[i]
         
-        #compute the two numbers and output an answer
-        #never exicutes. Skips this and give error that  var total is never assigned 
+        #computes the two numbers and output an answer
         if operator == "+":
             total = int(numOne) + int(numTwo)
         elif operator == "-":
