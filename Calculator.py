@@ -27,7 +27,7 @@ class calculator():
         for i in range(10):
             self.t[i].set("")
         
-        #useing titles as the screen make mutiple titles as place on the screen
+        #useing titles as the screen make multiple titles as place on the screen
         self.title = [
         tkinter.Label(textvariable=self.t[0], font=self.f,foreground="white", background="black", width=twidth, height=bhight, padx=pad_x, pady= pad_y), 
         tkinter.Label(textvariable=self.t[1], font=self.f,foreground="white", background="black", width=twidth, height=bhight, padx=pad_x, pady= pad_y), 
@@ -65,7 +65,7 @@ class calculator():
         self.button_eq = tkinter.Button(text="=", font=self.f,width=bwidth, height=bhight, bg="orange", fg="white", pady= pad_y, command=self.equals)
         self.button_clear = tkinter.Button(text="Clear", font=self.f, width=bwidth, height=bhight, bg="orange", fg="white", pady= pad_y, command=self.clear)
         
-        #button Funtions
+        #button Functions
         
 
         #print button
@@ -92,7 +92,7 @@ class calculator():
         #loop and listen for button press
         self.window.mainloop()
     
-    #Funtions for the Button Action
+    #Functions for the Button Action
     def zero(self):
         self.screen("0")
     def one(self):
@@ -124,28 +124,29 @@ class calculator():
     def equals(self):
         #set the strings to ints
         #see if you need to identify the operator or if the python will recongives it 
-        #save the anwser to the array
+        #save the answer to the array
         #################################################################################
         #May/26/2020 
         #need to figure out how to tell if a StringVar is a digit as .isdigit is for String values
-        #try convering the value in to a string useing .get() method
+        #try converging the value in to a string useing .get() method
+        #SOLVED
 
         operators = ["+", "-", "/", "*"]
         one = []
         two = []
         count = 0
-        frist = True
+        first = True
         operator = ""
         for i in range(9, -1, -1):
             if self.t[i].get().isdigit():
-                if frist:
+                if first:
                    one.insert(count, self.t[i].get())
                    count+=1
                 else:
                     two.insert(count, self.t[i].get())
             elif self.t[i].get() in operators:
                 count=+1
-                frist = False
+                first = False
                 operator = self.t[i].get()
             else:
                 count=+1
@@ -158,7 +159,8 @@ class calculator():
         for i in range(len(two)):
             numTwo += two[i]
         
-        #computes the two numbers and output an answer
+        #compute the two numbers and output an answer
+        #never executes. Skips this and give error that  var total is never assigned 
         Error = False
         if operator == "+":
             total = int(numOne) + int(numTwo)
@@ -204,7 +206,9 @@ class calculator():
         if self.t[9].get():
             self.error()
         elif not self.t[0].get():
+            #print("first")
             self.t[0].set(input)
+        #this works on magic!! Its 3:40 fuck that took forever
         else:
             for i in range(9, -1, -1):
                 if self.t[i].get():
